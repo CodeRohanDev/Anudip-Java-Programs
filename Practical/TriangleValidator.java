@@ -16,21 +16,26 @@ public class TriangleValidator {
         double angle3 = scanner.nextDouble();
         
         // First check if any angle is negative
-        if (angle1 > 0 && angle2 > 0 && angle3 > 0 && (angle1 + angle2 + angle3) == 180) {
-            if (angle1 < 90 && angle2 < 90 && angle3 < 90) {
-                System.out.println("It is an Acute triangle.");
+        if (angle1 <= 0 || angle2 <= 0 || angle3 <= 0) {
+            System.out.println("Error: Negative or zero angles are not allowed.");
+        }
+        // Check if angles form a triangle and classify it
+        // Sum of angles must be 180 degrees and all angles must be positive
+        else if (angle1 + angle2 + angle3 == 180) {
+            System.out.println("These angles form a triangle.");
+            
+            // Classify the triangle
+            if (angle1 == angle2 && angle2 == angle3) {
+                System.out.println("It is an Equiangular triangle.");
             } else if (angle1 == 90 || angle2 == 90 || angle3 == 90) {
                 System.out.println("It is a Right-angled triangle.");
             } else {
                 System.out.println("It is a regular triangle.");
             }
-        }
-        // Check if angles form a triangle and classify it
-        // Sum of angles must be 180 degrees and all angles must be positive
-         else {
+        } else {
             System.out.println("These angles do not form a triangle.");
         }
-
+        
         scanner.close();
     }
 }
